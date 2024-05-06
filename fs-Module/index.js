@@ -48,16 +48,24 @@ const fs = require("fs");
 
 // fs.open("index.txt", "r+", (error, fd) => {
 //   if (error) {
-// console.error("Error ", error);
+//     console.error("Error ", error);
 //   }
 //   console.log("Open file Successfully ");
 //   fs.read(fd, buf, 0, buf.length, 0, (err, data) => {
-// its give data in Bytes
-// if (err) {
-//   console.error("Err,", err);
-// }
-// console.log("Data ", data); // this data in bytes
-// console.log("DataInString ", buf.slice(0, data).toString()); // for string data value
+//     // its give data in Bytes
+//     if (err) {
+//       console.error("Err,", err);
+//     }
+//     console.log("Data ", data); // this data in bytes
+//     console.log("DataInString ", buf.slice(0, data).toString()); // for string data value
+
+//     fs.close(fd, (errr) => { // for closing the open file   
+//       if (errr) {
+//         console.error("Error in closing file");
+//       } else {
+//         console.log("Success in closing file");
+//       }
+//     });
 //   });
 // });
 
@@ -78,10 +86,22 @@ fs.writeFile("index.txt", "Hello there", (err) => {
 
 /** Append File */
 
-fs.appendFile('index.txt',  ', -- I am Ravi', (err) => {
-    if (err) {
-        console.error("Error found in append file!");
-      } else {
-        console.log("success in append file");
-      }
+// Asynchronous code 
+fs.appendFile("index.txt", ", -- I am Ravi", "utf8", (err) => {
+  if (err) {
+    console.error("Error found in append file!");
+  } else {
+    console.log("success in append file");
+  }
 });
+
+//synchronous code  
+// => this code is collapse with upper code so not try when you write code in asynchronous code 
+// const sync = fs.appendFileSync('index.txt', ', -- I am Ravi', 'utf-8', (err) => {
+//     if (err) {
+//         console.error("Error found in sync file!");
+//       } else {
+//         console.log("success in sync file");
+//       }
+// });
+// console.log(sync);

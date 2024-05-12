@@ -1,4 +1,6 @@
-/*******************************************************************************/
+/**
+ *  In this project => client call the [ data ] - [ server ] to  another [ server ]
+*/
 const requireHttp = require("http");
 const workPORT = 5001;
 const workHOSTNAME = "localhost";
@@ -18,7 +20,7 @@ const createWorkServer = requireHttp.createServer((req, res) => {
 
   } else if (req.url == "/product") {
     // for show => product page
-    const option = {
+    const option = {  // anothe server called 
       hostname: "fakestoreapi.com",
       path: "/products/1",
       method: "GET",
